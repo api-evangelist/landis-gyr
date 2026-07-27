@@ -1,0 +1,67 @@
+generated: '2026-07-27'
+method: searched
+source: landisgyr.com newsroom, product pages, and live probes of status/changelog hosts
+scope_note: >-
+  There is no public API, so there is no API versioning scheme, no deprecation policy and
+  no API changelog to capture. What Landis+Gyr does have is a PRODUCT-PORTFOLIO lifecycle,
+  and in 2025-2026 that portfolio changed materially through divestiture. Both are recorded
+  below — the API-side entries as verified absence.
+api_lifecycle:
+  versioning:
+    scheme: none published
+    evidence: No public API, no version identifier, no versioning policy page found.
+  deprecation:
+    policy_url: null
+    sunset_header: unknown
+    evidence: >-
+      No deprecation or sunset policy is published. RFC 8594 Sunset/Deprecation header
+      support cannot be tested because no public endpoint exists.
+  changelog:
+    url: null
+    evidence: >-
+      No dated API or release changelog exists. The blog (blog.landisgyr.com, HubSpot) and
+      the newsroom are marketing surfaces, not release notes.
+  sla:
+    url: null
+    evidence: No published SLA or uptime commitment for any Landis+Gyr interface.
+  status_page:
+    url: null
+    probed:
+    - {url: 'https://status.landisgyr.com/', status: 0, note: DNS does not resolve}
+    - {url: 'https://landisgyr.statuspage.io/', status: 200, note: 'Redirects to atlassian.com/software/statuspage — the Atlassian marketing page, NOT a Landis+Gyr status page. /api/v2/status.json 302s to statuspage.io. No page exists.'}
+    - {url: 'https://status.gridstream.com/', status: 0, note: DNS does not resolve}
+  deprecated_operations: []
+product_lifecycle:
+  note: >-
+    Real, company-announced portfolio changes. These are what a consumer of Landis+Gyr
+    integrations actually needs to track, in the absence of an API changelog.
+  events:
+  - date: '2026'
+    kind: divestiture
+    subject: EMEA business
+    detail: >-
+      Sold to AURELIUS, completed 2026. The company states it will "sharpen its strategic
+      focus on the Americas and Asia-Pacific regions". This removed the EMEA product lines —
+      including the Converge REST API surface marketed at landisgyr.eu — from Landis+Gyr.
+    consequence: >-
+      Any integration built against an EMEA-region Landis+Gyr interface is no longer a
+      Landis+Gyr integration.
+  - date: '2025'
+    kind: divestiture
+    subject: EV Solutions (Ocean EV-charging software)
+    detail: Share purchase agreement signed 2025.
+    consequence: OCPP / OCPI surfaces are no longer part of the Landis+Gyr portfolio.
+  - date: '2026'
+    kind: divestiture
+    subject: Rhebo (OT security)
+    detail: Sold to Everfield, announced 2026.
+  - date: '2026'
+    kind: relocation
+    subject: Corporate headquarters
+    detail: Moved into a new Cham, Zug headquarters in 2026; Americas HQ remains Alpharetta, Georgia.
+support_lifecycle:
+  url: https://www.landisgyr.com/us/en/home/solutions/lifecycle-services-and-support/training.html
+  note: >-
+    "Lifecycle Services and Support" is a field/professional-services offering (plan &
+    deploy, secure & operate, support & analyze, training) — it is NOT an API lifecycle
+    policy and is recorded here only so the two are not confused.

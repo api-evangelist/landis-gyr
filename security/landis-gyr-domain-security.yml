@@ -1,0 +1,51 @@
+generated: '2026-07-27'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.landisgyr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 12 00:26:14 2026 GMT
+  hsts: true
+  hsts_max_age: 31557600
+- host: toolsportal.landisgyr.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Sep  2 18:54:11 2026 GMT
+  hsts: false
+- host: developers.landisgyr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 25 10:24:45 2026 GMT
+  hsts: true
+  hsts_max_age: 31556926
+  note: Developer portal (Firebase Hosting).
+- host: blog.landisgyr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 01:50:21 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  note: HubSpot-hosted blog.
+- host: investors.landisgyr.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 05:38:36 2026 GMT
+  hsts: false
+domains:
+- domain: landisgyr.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+  note: >-
+    No DNSSEC and no CAA records. DMARC is enforced at p=quarantine rather than p=reject.
+    Verified by dig on 2026-07-27.
+notes:
+- >-
+  toolsportal.landisgyr.com is the weakest host — TLS 1.2 with no HSTS — and it is the
+  customer login surface. Every other resolving host negotiates TLS 1.3.
+- >-
+  Hosts probed but excluded from the table: eu.landisgyr.com (EMEA property, divested to
+  AURELIUS in 2026) and careers.landisgyr.com (third-party jobs2web ATS).

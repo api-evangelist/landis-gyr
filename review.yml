@@ -335,3 +335,119 @@ actions:
   tier: built-stub
   tierReason: identity captured, developer portal confirmed live but fully gated, zero
     public contracts
+
+enrichment:
+  - round: '2026-07-27'
+    method: search / generate / derive per the API Evangelist enrichment pipeline
+    contractDiscoveryRerun:
+      note: >-
+        Contract discovery was re-run harder than round one before re-confirming "no spec",
+        including the Cloud Run backend the portal bundle exposes.
+      probes:
+        - {url: 'https://users-pszasi7sya-uk.a.run.app/openapi.json', status: 404}
+        - {url: 'https://users-pszasi7sya-uk.a.run.app/docs', status: 404}
+        - {url: 'https://users-pszasi7sya-uk.a.run.app/redoc', status: 404}
+        - {url: 'https://developers.landisgyr.com/openapi.yaml', status: 404}
+        - {url: 'https://developers.landisgyr.com/v1/openapi.json', status: 404}
+        - {url: 'https://developers.landisgyr.com/redoc', status: 404}
+        - {url: 'https://developers.landisgyr.com/graphql', status: 404}
+        - {url: 'https://developers.landisgyr.com/asyncapi.yaml', status: 404}
+        - {url: 'https://developers.landisgyr.com/llms.txt', status: 404}
+        - {url: 'https://www.landisgyr.com/llms.txt', status: 404}
+      finding: >-
+        Confirmed. No REST OpenAPI on any API or docs host root, no GraphQL surface to
+        introspect, no MCP server, no AsyncAPI. The Cloud Run user service is a Go service
+        (fault-JSON 404s), not a FastAPI app — no auto-generated spec. `openapi/` stays absent.
+    newFindings:
+      - id: productcert
+        finding: >-
+          Landis+Gyr runs a REAL coordinated vulnerability disclosure programme —
+          "Landis+Gyr productCERT" — with productCERT@landisgyr.com, a published PGP public
+          key (fingerprint 345A B00A 110A 3543 0FF4 D2C2 6F7E 4510 C58E 79FC), a
+          Vulnerability Management Policy Summary PDF, and a four-phase process
+          (identification, assessment, treatment, disclosure). No bug bounty. Round one
+          recorded the security page as a link only; this round captured the programme.
+        artifact: security/landis-gyr-vulnerability-disclosure.yml
+      - id: certificate-register
+        finding: >-
+          A published certificate register exists at
+          /us/en/home/knowledge.html?types=Certificates — ISO/IEC 27001 (issued 21 Aug 2025,
+          valid to 20 Aug 2028), ISO 9001:2015, ISO 14001:2015, ISO 45001:2018 and ISO 22301,
+          each with a downloadable PDF. This is Landis+Gyr's compliance surface; it has no
+          trust center. No IEC/ISA 62443 certification claim was found.
+        artifact: conformance/landis-gyr-conformance.yml
+      - id: wi-sun-fan-1.1
+        finding: >-
+          Beyond the FAN 1.0 certification recorded in round one, Landis+Gyr has certified
+          the Revelo grid sensing platform, the Network Router and second-generation
+          Series 6 network routers and data collectors to Wi-SUN FAN 1.1. It is a Wi-SUN
+          Alliance Promoter Member with a board seat.
+        artifact: conformance/landis-gyr-conformance.yml
+      - id: multispeak-cmep
+        finding: >-
+          Oracle Utilities' Smart Grid Gateway adapter documentation for "Landis+Gyr
+          Gridstream Command Center 8.1" names MultiSpeak v3.1 as the smart-meter command
+          format and CMEP as the bulk usage/event data format. This is the first concrete
+          evidence of WHAT protocol the Landis+Gyr head-end actually speaks — but it is a
+          third-party integrator's description, not a Landis+Gyr publication, and is recorded
+          with attribution and medium confidence.
+        artifact: conformance/landis-gyr-conformance.yml
+        source: https://docs.oracle.com/en/industries/energy-water/rate-cloud/23a/rcs-user-guides/Topics/D3_LandisGyrAdapterOverview.html
+    verifiedAbsences:
+      - subject: /.well-known/ discovery
+        result: >-
+          30 probes across 6 resolving hosts, all negative. toolsportal.landisgyr.com
+          returns 200 for every path but serves the same 633-byte SPA shell — not real
+          documents. No `WellKnown` pointer wired.
+        artifact: well-known/landis-gyr-well-known.yml
+      - subject: client libraries / SDKs
+        result: >-
+          npm, PyPI, Maven Central, NuGet, RubyGems, Packagist, crates.io and pkg.go.dev all
+          returned zero first-party packages. Notable that App Studio is a Java environment
+          and nothing is on Maven Central. No `SDKs` pointer wired.
+        artifact: packages/landis-gyr-packages.yml
+      - subject: Postman
+        result: >-
+          Two public Postman TEAM pages exist (landisgyrhess, landisgyr-swss) but both report
+          0 collections, 0 workspaces and 0 APIs. Nothing is published, so no `Postman`
+          pointer was wired.
+      - subject: status page
+        result: >-
+          status.landisgyr.com does not resolve; landisgyr.statuspage.io redirects to
+          Atlassian's own marketing page and its /api/v2/*.json endpoints 302 away — there is
+          NO Landis+Gyr status page. No `StatusPage` pointer wired.
+        artifact: lifecycle/landis-gyr-lifecycle.yml
+      - subject: changelog / deprecation policy / SLA
+        result: None published. No `ChangeLog` or `Deprecation` pointer wired.
+        artifact: lifecycle/landis-gyr-lifecycle.yml
+      - subject: API authentication
+        result: >-
+          No API key, OAuth 2.0, mTLS or accreditation scheme is documented. The only
+          observable auth is the developer portal's Firebase / Google Identity Platform
+          login, which gates a portal rather than an API — so no `Authentication` pointer was
+          wired, to avoid claiming documented API auth that does not exist.
+        artifact: authentication/landis-gyr-authentication.yml
+    skippedWithReason:
+      - {artifact: openapi/, reason: no machine-readable contract published anywhere}
+      - {artifact: 'mcp/, skills/, overlays/, errors/, scopes/, conventions/, data-model/, agentic-access/, arazzo/', reason: 'all require an OpenAPI to ground against; nothing to derive from'}
+      - {artifact: 'asyncapi/', reason: no event, streaming or webhook surface is published — not penalised, and fabricating one is prohibited}
+      - {artifact: 'sandbox/, cli/, components/', reason: none published; the only test surface is a simulated Revelo meter inside the gated App Studio}
+      - {artifact: 'grpc/', reason: no .proto published; no GitHub organization exists}
+      - {artifact: 'errors/*-decline-codes.yml', reason: not a payments or authorization provider}
+      - {artifact: 'security/*-trust-center.yml', reason: 'no trust center; the certificate register is the compliance surface and is wired as Compliance instead'}
+    pointersAdded:
+      - VulnerabilityDisclosure
+      - DomainSecurity
+      - Compliance
+      - Conformance
+      - Lifecycle
+      - Packages
+      - LLMsTxt
+    pointersDeliberatelyWithheld:
+      note: >-
+        Each of these is a scored check whose underlying thing Landis+Gyr does not publish.
+        Wiring the pointer would move the score without the substance, which the pipeline
+        forbids. The artifacts exist in the repo as evidence and are indexed in README.md.
+      withheld: [WellKnown, SDKs, Authentication, StatusPage, Deprecation, ChangeLog, Postman,
+        TrustCenter, MCPServer, AgentSkill, AsyncAPI, Webhooks, Idempotency, Sandbox, CLI,
+        APIReference, GettingStarted, Roadmap, Pricing, GitHubOrganization]

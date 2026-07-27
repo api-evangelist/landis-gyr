@@ -42,9 +42,37 @@ Getting in: register → pass validation/approval → request a Revelo developer
 
 ## Artifacts
 
-| Artifact | File |
-|---|---|
-| Company identity | `apis.yml` |
-| Review — mandate, standards, consumer/market split, access gate, auth, probes | `review.yml` |
+| Artifact | File | Wired in `apis.yml` |
+|---|---|---|
+| Company identity | `apis.yml` | — |
+| Review — mandate, standards, consumer/market split, access gate, auth, probes, enrichment log | `review.yml` | — |
+| Standards conformance — Wi-SUN FAN 1.0/1.1, IPv6 mesh, ISO management systems, MultiSpeak/CMEP | `conformance/landis-gyr-conformance.yml` | `Conformance`, `Compliance` |
+| productCERT vulnerability disclosure programme | `security/landis-gyr-vulnerability-disclosure.yml` | `VulnerabilityDisclosure`, `Security` |
+| TLS / HSTS / DNSSEC / CAA / SPF / DMARC probe | `security/landis-gyr-domain-security.yml` | `DomainSecurity` |
+| Portfolio lifecycle + verified absence of versioning/deprecation/changelog/SLA/status page | `lifecycle/landis-gyr-lifecycle.yml` | `Lifecycle` |
+| Package-registry sweep (8 registries, zero first-party libraries) | `packages/landis-gyr-packages.yml` | `Packages` |
+| Generated llms.txt | `llms/landis-gyr-llms.txt` | `LLMsTxt` |
+| `/.well-known/` sweep (30 probes, 6 hosts, all negative) | `well-known/landis-gyr-well-known.yml` | *withheld — nothing published* |
+| Authentication profile (developer-portal Firebase; no API auth published) | `authentication/landis-gyr-authentication.yml` | *withheld — no documented API auth* |
 
-No `openapi/` directory: nothing real was found to harvest.
+No `openapi/` directory: nothing real was found to harvest, re-confirmed 2026-07-27 against
+the API host roots, the docs host, and the Cloud Run backend the portal bundle exposes.
+
+Two artifacts are deliberately **not** pointed at from `apis.yml`. Both would satisfy a
+scored discoverability check (`WellKnown`, `Authentication`) that Landis+Gyr does not
+actually earn — it publishes no `/.well-known/` document and documents no API
+authentication. The files are kept as evidence of the sweep, not as claims.
+
+## What Landis+Gyr does publish
+
+Round two found more than round one did. Landis+Gyr runs a real coordinated vulnerability
+disclosure programme — **productCERT**, `productCERT@landisgyr.com`, with a published PGP
+key and a Vulnerability Management Policy Summary — and a real **certificate register**
+carrying ISO/IEC 27001, ISO 9001, ISO 14001, ISO 45001 and ISO 22301 with downloadable
+PDFs. It has certified products to **Wi-SUN FAN 1.1** as well as 1.0. And Oracle Utilities'
+adapter documentation reveals that the Gridstream Command Center head-end speaks
+**MultiSpeak v3.1** and **CMEP** — the first concrete evidence of the protocol behind the
+gate, though it is an integrator's description rather than a Landis+Gyr publication.
+
+The security and quality posture is well documented. The API posture is not documented at
+all. That gap is the story.

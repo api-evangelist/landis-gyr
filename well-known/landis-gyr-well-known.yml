@@ -1,0 +1,113 @@
+generated: '2026-07-27'
+method: searched
+source: live probes of every resolving landisgyr.com host
+result: none
+summary: >-
+  Landis+Gyr publishes NO /.well-known/ discovery document on any host it controls.
+  Thirty probes across six resolving hosts returned either a 404 or an SPA catch-all.
+  No security.txt, no OpenID Connect discovery, no OAuth authorization-server metadata,
+  no RFC 9727 api-catalog, no ai-plugin.json. This is recorded as verified ABSENCE, not
+  as a finding — no `WellKnown` pointer is wired into apis.yml because there is nothing
+  published to point at.
+caveat: >-
+  toolsportal.landisgyr.com returns HTTP 200 for EVERY path, including nonsense ones —
+  it is a single-page-app catch-all serving the same 633-byte index.html shell. Those
+  200s are NOT well-known documents and are recorded as `spa_catch_all: true`.
+hosts:
+- host: https://www.landisgyr.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://developers.landisgyr.com
+  note: Firebase-hosted Nuxt SPA; developer portal, fully gated.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://blog.landisgyr.com
+  note: HubSpot-hosted blog.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://toolsportal.landisgyr.com
+  spa_catch_all: true
+  note: >-
+    Returns HTTP 200 with an identical 633-byte HTML SPA shell for every path probed.
+    None of these are real well-known documents.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    real_document: false
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    real_document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    real_document: false
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    real_document: false
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    real_document: false
+- host: https://investors.landisgyr.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://eu.landisgyr.com
+  note: >-
+    EMEA property (HubSpot). The EMEA business was divested to AURELIUS in 2026 and is
+    NOT counted as a Landis+Gyr surface; probed for completeness only.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+security_txt:
+  published: false
+  note: >-
+    No RFC 9116 security.txt exists, but Landis+Gyr DOES run a real coordinated
+    vulnerability disclosure programme (productCERT) — it is published as an HTML page
+    instead. See security/landis-gyr-vulnerability-disclosure.yml.

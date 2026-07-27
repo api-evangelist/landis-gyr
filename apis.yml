@@ -103,7 +103,32 @@ common:
 - type: PrivacyPolicy
   url: https://www.landisgyr.com/us/en/home/legal/privacy-policy.html
 - type: Security
-  url: https://www.landisgyr.com/us/en/home/misc/report-security-issue.html
+  url: https://www.landisgyr.com/us/en/home/misc/report-security-issue
+  name: Report a Security Issue — Landis+Gyr productCERT (coordinated vulnerability disclosure,
+    PGP key published)
+- type: VulnerabilityDisclosure
+  url: security/landis-gyr-vulnerability-disclosure.yml
+  name: productCERT disclosure programme (productCERT@landisgyr.com, PGP, policy summary PDF)
+- type: DomainSecurity
+  url: security/landis-gyr-domain-security.yml
+  name: TLS / HSTS / DNSSEC / CAA / SPF / DMARC probe of every resolving landisgyr.com host
+- type: Compliance
+  url: https://www.landisgyr.com/us/en/home/knowledge.html?types=Certificates&date=date.desc
+  name: Certificate register — ISO/IEC 27001, ISO 9001, ISO 14001, ISO 45001, ISO 22301
+    (downloadable certificates)
+- type: Conformance
+  url: conformance/landis-gyr-conformance.yml
+  name: Standards conformance — Wi-SUN FAN 1.0/1.1, IPv6 mesh, ISO management systems,
+    MultiSpeak/CMEP head-end integration
+- type: Lifecycle
+  url: lifecycle/landis-gyr-lifecycle.yml
+  name: Portfolio lifecycle and verified absence of API versioning, deprecation, changelog,
+    SLA and status page
+- type: Packages
+  url: packages/landis-gyr-packages.yml
+  name: Package-registry sweep — eight registries, zero first-party client libraries
+- type: LLMsTxt
+  url: llms/landis-gyr-llms.txt
 - type: LinkedIn
   url: https://www.linkedin.com/company/landis/
 - type: X

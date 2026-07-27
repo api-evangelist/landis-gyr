@@ -1,0 +1,60 @@
+generated: '2026-07-27'
+method: searched
+source: live queries against the public package registries, 2026-07-27
+result: none
+packages: []
+official_sdk_count: 0
+summary: >-
+  Landis+Gyr publishes NO first-party client library on any public package registry, in any
+  language. Eight registries were queried for "landisgyr", "landis-gyr" and "gridstream" and
+  every one returned zero first-party results. This is consistent with the rest of the
+  profile: there is no public API to build an SDK against, and the only development surface
+  Landis+Gyr advertises — App Studio for Gridstream Connect / Revelo edge apps — is a
+  Java on-device application environment distributed through an approval-gated developer
+  portal, not a published artifact repository.
+registries_probed:
+- registry: npm
+  query: landisgyr
+  hits: 0
+  note: One unrelated result ("hb-p1-tools", a third-party Homebridge plugin). "gridstream" returned only "GridFS".
+- registry: pypi
+  queries: [landisgyr, landis-gyr, gridstream]
+  hits: 0
+  note: All three project pages return 404.
+- registry: maven-central
+  query: landisgyr
+  hits: 0
+  note: >-
+    Notable because App Studio is a "Java-based Application Development Environment" —
+    the meter-app SDK is not published to Maven Central.
+- registry: nuget
+  query: landisgyr
+  hits: 0
+- registry: rubygems
+  query: landisgyr
+  hits: 0
+- registry: packagist
+  query: landisgyr
+  hits: 0
+- registry: crates.io
+  query: landisgyr
+  hits: 0
+- registry: pkg.go.dev
+  query: landisgyr
+  hits: 0
+adjacent_findings:
+- kind: postman
+  finding: >-
+    Two public Postman TEAM pages exist — "LandisGyrHess" (handle landisgyrhess) and
+    "Landis+Gyr SWSS" (handle landisgyr-swss) — but both report collectionCount 0,
+    workspaceCount 0 and apiCount 0. No public collection, workspace or API is published,
+    so no `Postman` pointer is wired into apis.yml.
+- kind: github
+  finding: >-
+    github.com/landisgyr resolves to an individual's personal account, not the company.
+    No Landis+Gyr GitHub organization exists, so there is no source to harvest packages from.
+- kind: distribution-channel
+  finding: >-
+    The actual developer distribution channel is the approval-gated developer portal at
+    developers.landisgyr.com — App Studio plus a Revelo Developer Kit (virtual or hardware)
+    requested at /request-devkit. Nothing renders or downloads without an approved account.

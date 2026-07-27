@@ -1,0 +1,149 @@
+generated: '2026-07-27'
+method: searched
+source: >-
+  landisgyr.com product/standards pages, the Landis+Gyr certificate register, Wi-SUN
+  Alliance certification announcements, and Oracle Utilities' Landis+Gyr adapter
+  documentation
+scope_note: >-
+  Landis+Gyr publishes no OpenAPI, so NONE of the API-shaped conformance standards
+  (OAuth 2.0, OIDC, RFC 9457 problem details, JSON:API, OData, SCIM, pagination or
+  idempotency conventions) can be asserted here — there is no contract to read them
+  from. What Landis+Gyr does conform to are NETWORK, DEVICE and MANAGEMENT-SYSTEM
+  standards, plus the utility integration protocols its head-end speaks. Those are
+  recorded below.
+standards:
+- id: wi-sun-fan-1.0
+  name: Wi-SUN FAN 1.0
+  category: network
+  conforms: true
+  evidence: >-
+    https://www.landisgyr.com/us/en/home/solutions/flexible-communications/wi-sun-interoperability
+    (200) — "With 15 Wi-SUN FAN–certified products, Landis+Gyr leads the industry in
+    delivering open, secure, and future-ready AMI solutions." Revelo was the first grid
+    sensing platform to achieve Wi-SUN FAN 1.0 certification.
+- id: wi-sun-fan-1.1
+  name: Wi-SUN FAN 1.1
+  category: network
+  conforms: true
+  evidence: >-
+    https://www.landisgyr.com/news/landisgyr-adds-wisun-certification-for-fan-1-1-specification-to-network-equipment/
+    — Revelo grid sensing platform, Network Router, and second-generation Series 6 network
+    routers and data collectors certified to FAN 1.1.
+- id: ipv6-mesh
+  name: Standards-based IPv6 RF mesh
+  category: network
+  conforms: true
+  evidence: >-
+    Wi-SUN interoperability page — "a standards-based, secure, and scalable IPv6 Mesh
+    networking technology". Gridstream Connect is the product.
+- id: iso-iec-27001
+  name: ISO/IEC 27001 — Information security management systems
+  category: management-system
+  conforms: true
+  certificate: https://www.landisgyr.com/content/dam/landisgyr/iso-certificates/certificate-downloads/ISO%2027001_multi_site_Certificate.pdf
+  evidence: >-
+    Landis+Gyr certificate register — "ISO/IEC 27001 Management System Certificate covering
+    multiple Landis+Gyr sites, issued on 21 Aug 2025 and valid until 20 Aug 2028."
+- id: iso-9001
+  name: ISO 9001:2015 — Quality management
+  category: management-system
+  conforms: true
+  certificate: https://www.landisgyr.com/content/dam/landisgyr/iso-certificates/certificate-downloads/2026.06.18_9001_0152121_ENG_LandisGyr.pdf
+  evidence: Certificate of Registration covering multiple Landis+Gyr sites, issued 18 Jun 2026, valid through 19 Jun 2029.
+- id: iso-14001
+  name: ISO 14001:2015 — Environmental management
+  category: management-system
+  conforms: true
+  certificate: https://www.landisgyr.com/content/dam/landisgyr/iso-certificates/certificate-downloads/2026.06.18_14001_0152116_ENG_LandisGyr.pdf
+  evidence: Certificate of Registration for multi-site operations, issued 18 Jun 2026, valid until 18 Jun 2029.
+- id: iso-45001
+  name: ISO 45001:2018 — Occupational health and safety
+  category: management-system
+  conforms: true
+  certificate: https://www.landisgyr.com/content/dam/landisgyr/iso-certificates/certificate-downloads/2026.06.18_45001_0152119_ENG_LandisGyr.pdf
+  evidence: Certificate of Registration covering multiple Landis+Gyr sites, issued 18 Jun 2026, valid until 19 Jun 2029.
+- id: iso-22301
+  name: ISO 22301 — Business continuity management
+  category: management-system
+  conforms: true
+  certificate: https://www.landisgyr.com/content/dam/landisgyr/iso-certificates/certificate-downloads/2026.06.11_22301_0152319_ENG_LandisGyr.pdf
+  evidence: Certificate issued 11 Jun 2026 covering multiple Landis+Gyr sites.
+- id: multispeak-3.1
+  name: MultiSpeak v3.1
+  category: utility-integration
+  conforms: true
+  confidence: medium
+  attribution: third-party
+  evidence: >-
+    Oracle Utilities documents its Smart Grid Gateway adapter for "Landis+Gyr Gridstream
+    Command Center 8.1" as using "MultiSpeak v3.1" as the smart-meter command format —
+    https://docs.oracle.com/en/industries/energy-water/rate-cloud/23a/rcs-user-guides/Topics/D3_LandisGyrAdapterOverview.html
+    This is an INTEGRATOR's description of the Landis+Gyr head-end interface, not a
+    Landis+Gyr publication. Landis+Gyr itself makes no MultiSpeak claim in public.
+- id: cmep
+  name: California Metering Exchange Protocol (CMEP)
+  category: utility-integration
+  conforms: true
+  confidence: medium
+  attribution: third-party
+  evidence: >-
+    Same Oracle Utilities adapter page — CMEP is named as the bulk usage/event data format
+    exchanged with Gridstream Command Center. Third-party attribution, same caveat as
+    MultiSpeak.
+- id: coordinated-vulnerability-disclosure
+  name: Coordinated vulnerability disclosure
+  category: security-process
+  conforms: true
+  evidence: >-
+    Landis+Gyr productCERT publishes a four-phase policy (identification, assessment,
+    treatment, disclosure) and explicitly asks reporters to "follow the principles of
+    coordinated vulnerability disclosure" —
+    https://www.landisgyr.com/us/en/home/misc/report-security-issue
+    See security/landis-gyr-vulnerability-disclosure.yml.
+not_conforming_or_not_found:
+- id: green-button-espi
+  name: Green Button / NAESB ESPI
+  conforms: false
+  evidence: >-
+    No Green Button page across 425 sitemap URLs, no entry in the Green Button Alliance
+    platform-provider directory, no company claim. See review.yml.
+- id: cdr-energy
+  name: Australian Consumer Data Right (energy)
+  conforms: false
+  evidence: CDR designates retailers and AEMO, not meter manufacturers. No CDR Register entry.
+- id: ieee-2030.5
+  conforms: false
+  evidence: No reference found on any Landis+Gyr property.
+- id: openadr
+  conforms: false
+  evidence: No reference found. The demand-response page markets Power Center load control but names no standard.
+- id: cta-2045
+  conforms: false
+  evidence: No reference found.
+- id: iec-61968-61970-cim
+  conforms: false
+  evidence: No reference found.
+- id: iec-62443
+  conforms: false
+  evidence: >-
+    No IEC/ISA 62443 certification claim was found on any Landis+Gyr property or in public
+    reporting, despite it being the usual OT-security certification for this product class.
+- id: ocpp-ocpi
+  conforms: false
+  evidence: >-
+    The Ocean EV-charging software business was sold under a 2025 share purchase agreement
+    and is no longer a Landis+Gyr product line.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No OAuth 2.0 surface published. /.well-known/oauth-authorization-server 404 on every
+    host. The developer portal authenticates with Firebase / Google Identity Platform.
+- id: openid-connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on www, developers and every other resolving host.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No OpenAPI or public error contract exists to assert this against.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any host, though a real disclosure programme exists as an HTML page.

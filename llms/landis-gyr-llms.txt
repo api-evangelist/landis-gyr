@@ -1,0 +1,64 @@
+# Landis+Gyr
+
+> Landis+Gyr Group AG is a 130-year-old energy technology company that builds the smart electricity, gas and water meters, the RF-mesh and cellular networks, and the head-end, meter-data-management and grid-analytics software that utilities run advanced metering infrastructure on. Incorporated in Cham, Zug, Switzerland and listed on the SIX Swiss Exchange (LAND), its Americas headquarters is in Alpharetta, Georgia and the United States is its home market after the March 2026 divestiture of the EMEA business to AURELIUS.
+
+## Read this first
+
+Landis+Gyr publishes **no public API**. There is no OpenAPI, Swagger, AsyncAPI, GraphQL schema, Postman collection, SDK, CLI or endpoint reference on any host it controls. `apis[]` in `apis.yml` is deliberately empty. Anything that claims otherwise is not sourced from Landis+Gyr.
+
+Landis+Gyr sits one layer **upstream of the consumer**: it sells to the ~2,000 utilities that are themselves the regulated data holders. No energy data mandate — not US Green Button, not Ontario's Green Button regulation, not Australia's Consumer Data Right for energy — attaches to Landis+Gyr itself. Meter interval data reaches households only after a utility customer re-publishes it, typically through a third-party Green Button–certified portal Landis+Gyr does not operate.
+
+A real developer portal exists at https://developers.landisgyr.com/ — the Gridstream Connect Apps / Revelo edge-app program. It is unlinked from the corporate site, renders empty without authentication, and is gated behind registration plus an admin approval workflow. The "comprehensive set of APIs" its marketing describes is an on-device Java meter-app API reached through App Studio and a Revelo Developer Kit, not a web API.
+
+## Company
+
+- [Website](https://www.landisgyr.com/us/en/home)
+- [Who we are](https://www.landisgyr.com/us/en/home/about-landis-gyr/who-we-are.html)
+- [Software portfolio](https://www.landisgyr.com/us/en/home/software)
+- [Devices](https://www.landisgyr.com/us/en/home/devices)
+- [Next Gen AMI solutions](https://www.landisgyr.com/us/en/home/solutions/next-gen-ami)
+- [Blog](https://blog.landisgyr.com/en/us) ([RSS](https://blog.landisgyr.com/en/us/rss.xml))
+- [Newsroom](https://www.landisgyr.com/us/en/home/news-media/newsroom.html)
+- [Investors](https://investors.landisgyr.com/)
+
+## Developer surface (gated)
+
+- [Developer portal](https://developers.landisgyr.com/) — registration + approval required; every content route returns an empty shell anonymously
+- [Register](https://developers.landisgyr.com/register) / [Login](https://developers.landisgyr.com/login)
+- [Gridstream Connect Apps Ecosystem](https://www.landisgyr.com/us/en/home/software/gridstream-connect-apps-ecosystem) — App Studio, App Marketplace, App Manager, App Lab; the only public call to action is "Email Our Team"
+- [Developer forum](https://stackoverflowteams.com/c/lg-developers) — private Stack Overflow for Teams instance
+- [Tools Portal](https://toolsportal.landisgyr.com/) — customer login shell
+
+## Standards and security
+
+- [Wi-SUN FAN interoperability](https://www.landisgyr.com/us/en/home/solutions/flexible-communications/wi-sun-interoperability) — 15 Wi-SUN FAN–certified products, FAN 1.0 and FAN 1.1, standards-based IPv6 mesh
+- [Certificate register](https://www.landisgyr.com/us/en/home/knowledge.html?types=Certificates&date=date.desc) — ISO/IEC 27001, ISO 9001, ISO 14001, ISO 45001, ISO 22301, with downloadable certificates
+- [Report a security issue](https://www.landisgyr.com/us/en/home/misc/report-security-issue) — Landis+Gyr productCERT, productCERT@landisgyr.com, PGP key published, coordinated vulnerability disclosure; no bug bounty
+- [Vulnerability Management Policy Summary (PDF)](https://landisgyr.com/webfoo/wp-content/uploads/2024/11/Vulnerability-Management-Policy-Summary-v1.0.pdf)
+
+## API Evangelist artifacts
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/apis.yml) — company identity and link properties
+- [review.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/review.yml) — mandate posture, standards, consumer/market data split, access gate, auth model, full probe log
+- [conformance/landis-gyr-conformance.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/conformance/landis-gyr-conformance.yml) — standards conformed to and standards verified absent
+- [security/landis-gyr-vulnerability-disclosure.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/security/landis-gyr-vulnerability-disclosure.yml) — productCERT programme
+- [security/landis-gyr-domain-security.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/security/landis-gyr-domain-security.yml) — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe
+- [lifecycle/landis-gyr-lifecycle.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/lifecycle/landis-gyr-lifecycle.yml) — portfolio divestitures; verified absence of versioning, deprecation, changelog, SLA and status page
+- [packages/landis-gyr-packages.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/packages/landis-gyr-packages.yml) — eight package registries swept, zero first-party libraries
+- [well-known/landis-gyr-well-known.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/well-known/landis-gyr-well-known.yml) — thirty /.well-known probes across six hosts, all negative
+- [authentication/landis-gyr-authentication.yml](https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/authentication/landis-gyr-authentication.yml) — developer-portal Firebase auth; no API auth published
+
+## What does not exist
+
+- No OpenAPI / Swagger / AsyncAPI / GraphQL / gRPC contract on any host
+- No SDK on npm, PyPI, Maven Central, NuGet, RubyGems, Packagist, crates.io or pkg.go.dev
+- No public Postman collection or workspace
+- No CLI, no sandbox, no embedded components, no MCP server
+- No status page, no changelog, no deprecation policy, no SLA
+- No /.well-known/ document of any kind, including security.txt
+- No Landis+Gyr GitHub organization (github.com/landisgyr is an individual)
+- `developer.`, `docs.`, `api.` and `data.landisgyr.com` do not resolve
+
+## Provenance
+
+Generated by the API Evangelist enrichment pipeline on 2026-07-27 from apis.yml, review.yml and the repository artifacts. Landis+Gyr does not publish an llms.txt: https://www.landisgyr.com/llms.txt and https://developers.landisgyr.com/llms.txt both return 404.

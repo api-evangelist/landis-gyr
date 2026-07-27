@@ -1,0 +1,47 @@
+generated: '2026-07-27'
+method: derived
+source: review.yml (developer-portal bundle inspection) + live /.well-known probes
+public_api_auth:
+  published: false
+  summary: >-
+    Landis+Gyr documents NO authentication scheme for any product API — no API key, no
+    OAuth 2.0, no mTLS, no accreditation path, no token endpoint, no base URI. There is no
+    OpenAPI to derive securitySchemes from. This artifact records the only authentication
+    surface that could be observed, which belongs to the developer PORTAL, not to an API.
+    No `Authentication` pointer is wired into apis.yml, because the provider does not
+    document API authentication.
+portal_auth:
+  surface: https://developers.landisgyr.com/
+  scheme: Firebase Authentication (Google Identity Platform)
+  identity_provider: identitytoolkit.googleapis.com
+  bot_defence: reCAPTCHA Enterprise
+  flows_observed:
+  - /v1/accounts:signUp
+  - /v1/accounts:signInWithPassword
+  - /v1/accounts:signInWithIdp
+  - /v1/accounts:resetPassword
+  - /v1/accounts:sendOobCode
+  - /v1/token
+  - /v2/accounts:revokeToken
+  evidence: >-
+    developers.landisgyr.com is a Nuxt SPA on Firebase Hosting (project
+    cop-a-p-obj-s-stabkern-01); the above calls are present in its client bundle.
+  gate: >-
+    Authentication alone is not sufficient. Registration is followed by a validation /
+    approval workflow (POST /register/validate/{id}, an /admin/users/invitations surface,
+    a per-page access_list, and an application-status enum including APPROVED). Every
+    content route renders empty for an anonymous visitor.
+discovery_probes:
+- url: https://developers.landisgyr.com/.well-known/openid-configuration
+  status: 404
+- url: https://www.landisgyr.com/.well-known/openid-configuration
+  status: 404
+- url: https://developers.landisgyr.com/.well-known/oauth-authorization-server
+  status: 404
+- url: https://www.landisgyr.com/.well-known/oauth-authorization-server
+  status: 404
+schemes: []
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
