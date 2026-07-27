@@ -1,0 +1,337 @@
+aid: landis-gyr
+name: Landis+Gyr
+review:
+  question: >-
+    Does Landis+Gyr publish a documented public API — consumer usage data, market/grid
+    data, or product APIs — and does any energy data mandate attach to it?
+  answer: false
+  date: '2026-07-27'
+  reviewer: API Evangelist
+  method: live probing of landisgyr.com and its subdomains, sitemap harvest, developer
+    portal route + bundle inspection, plus corroborating public sources
+  homeMarket: United States
+  legalDomicile: Cham, Zug, Switzerland (Landis+Gyr Group AG, SIX Swiss Exchange)
+
+mandate:
+  regime: none
+  status: not-applicable
+  reasoning: >-
+    Landis+Gyr is an equipment and software VENDOR to utilities, not a regulated data
+    holder. Green Button (NAESB/NIST ESPI) obligations, where they exist at all, attach
+    to utilities and retailers; the US programme is voluntary with no federal compulsion,
+    Ontario's is a provincial regulation on Ontario LDCs, and Australia's Consumer Data
+    Right for energy designates retailers and AEMO. None of those obligations name a
+    metering manufacturer. Landis+Gyr therefore carries no consumer-data mandate of its
+    own, and this profile records `none` / `not-applicable` rather than borrowing its
+    customers' obligations.
+  whatWasCheckedForGreenButton:
+    - probe: https://www.landisgyr.com/us/en/home.sitemap.xml
+      status: 200
+      note: >-
+        425 URLs harvested. A case-insensitive search for "green button", "espi",
+        "developer", "api" and "sdk" across every URL returned ZERO product, standards
+        or developer pages — the only "green" hits are marketing/newsroom copy about a
+        conference and a blog post. No Green Button page exists on the US site.
+    - probe: https://www.greenbuttonalliance.org/ds-vendors
+      status: 200
+      note: >-
+        Green Button Alliance platform-provider directory. The static page names only
+        GBA sponsor members (Con Edison, Enbridge Gas, UtilityAPI); the vendor listing is
+        a JS-driven searchable directory and Landis+Gyr does not appear in the served
+        content. NO Green Button certification for Landis+Gyr was found or verified.
+    - probe: https://www.greenbuttonalliance.org/certified
+      status: 404
+      note: No such page; certification is surfaced through the directory-services listings.
+  claimVsImplementation: >-
+    Third-party reporting describes Landis+Gyr smart meters as feeding interval data that
+    utilities export in ESPI XML — but every observed case routes through someone else's
+    Green Button–certified portal (e.g. NISC SmartHub), not through Landis+Gyr. That is a
+    downstream utility implementation, not a Landis+Gyr one. Landis+Gyr itself makes no
+    public Green Button claim, so there is not even a `live-claimed-unverified` claim to
+    test.
+  relatedRegimesDeliberatelyExcluded:
+    - regime: smart-meter-infrastructure
+      note: >-
+        Landis+Gyr supplied SMETS2 meters into the UK DCC programme, but that business
+        went with the EMEA divestiture to AURELIUS completed in 2026 and, in any case, a
+        DCC infrastructure mandate is not a consumer data right.
+    - regime: cdr-energy
+      note: >-
+        Landis+Gyr has an ANZ business (e.g. the 2026 Origin Energy smart gas programme),
+        but Australian CDR energy obligations designate retailers and AEMO, not meter
+        manufacturers. No CDR Register entry or public CDR base URI exists for Landis+Gyr.
+    - regime: green-button-ontario
+      note: >-
+        Landis+Gyr sells Revelo into Ontario LDCs (e.g. Festival Hydro, 2026). The Ontario
+        Green Button regulation binds the LDC, not the meter vendor.
+
+dataStandard:
+  consumerData: no standard reference found
+  networkAndDevice:
+    - name: Wi-SUN FAN
+      evidence: >-
+        https://www.landisgyr.com/us/en/home/solutions/flexible-communications/wi-sun-interoperability
+        (200) — "With 15 Wi-SUN FAN–certified products, Landis+Gyr leads the industry in
+        delivering open, secure, and future-ready AMI solutions."
+    - name: IPv6 mesh
+      evidence: >-
+        Same page — "a standards-based, secure, and scalable IPv6 Mesh networking technology".
+  notFound:
+    - Green Button / ESPI (no page, no certification, no claim)
+    - CDR Consumer Data Standards (energy)
+    - IEEE 2030.5
+    - OpenADR
+    - CTA-2045
+    - IEC CIM 61968 / 61970
+    - OCPP / OCPI (the Ocean EV-charging software business was sold under a 2025 share
+      purchase agreement and is no longer a Landis+Gyr product line)
+  note: >-
+    The demand-response page (https://www.landisgyr.com/us/en/home/solutions/grid-flexibility/demand-response,
+    200) markets "Power Center" load control and "integrations between Power Center and
+    other utility systems" but names no standard and no interface.
+
+consumerVsMarketDataSplit:
+  consumer_data_api: false
+  consumer_data_evidence: >-
+    No documented API by which a third party can obtain an individual customer's usage or
+    billing data from Landis+Gyr. Landis+Gyr never holds the customer relationship — the
+    utility does. Its Consumer Engagement product is white-labelled to the utility. No
+    consent flow, no accreditation path, no base URI published.
+  market_data_open: false
+  market_data_evidence: >-
+    Landis+Gyr publishes no open grid, market or system data of any kind. It is not an
+    ISO/RTO, a system operator or a data agency; its data belongs to the utilities that
+    buy its infrastructure. Nothing anonymous is served from any landisgyr.com host.
+  theFinding: >-
+    Landis+Gyr is CLOSED ON BOTH AXES — and that is the honest reading of the metering
+    tier. The company manufactures the instrument that creates the most granular consumer
+    energy data in existence and ships none of it. Both the consumer seam and the market
+    seam belong to its customers, one layer down.
+
+accessGate:
+  gate: application-approval
+  gated: true
+  whatADeveloperMustDo: >-
+    (1) Find developers.landisgyr.com at all — it is linked from NO page of the corporate
+    site and appears in no sitemap; the public call to action on the Gridstream Connect
+    Apps Ecosystem page is "Email Our Team", a sales inquiry form.
+    (2) Create an account at /register (Firebase Authentication).
+    (3) Pass a registration validation / approval step — the client bundle exposes a
+    POST /register/validate/{id} call, an admin surface at /admin/users/invitations and
+    /admin/accounts, a per-page access_list, and an application status enum whose values
+    include APPROVED.
+    (4) For hardware, submit a Revelo developer-kit request at /request-devkit
+    (backend route /users/dev-kit/request).
+    Nothing — no document, no learning path, no API reference — renders for an anonymous
+    visitor. Every route returns a 200 empty Nuxt shell.
+
+authModel:
+  scheme: Firebase Authentication (Google Identity Platform)
+  evidence: >-
+    developers.landisgyr.com is a Nuxt SPA on Firebase Hosting (project
+    cop-a-p-obj-s-stabkern-01). Its bundle calls identitytoolkit.googleapis.com
+    /v1/accounts:signUp, :signInWithPassword, :signInWithIdp, :resetPassword,
+    :sendOobCode, /v1/token and /v2/accounts:revokeToken, with reCAPTCHA Enterprise
+    enrolled. Backend user service observed at https://users-pszasi7sya-uk.a.run.app
+    (Google Cloud Run) — root returns 404 application/json; it is an internal service
+    with no published contract and is NOT treated here as a public API.
+  openidConfiguration:
+    - url: https://developers.landisgyr.com/.well-known/openid-configuration
+      status: 404
+    - url: https://www.landisgyr.com/.well-known/openid-configuration
+      status: 404
+  publicApiAuth: none published — no API key, OAuth2, mTLS or accreditation scheme is
+    documented for any Landis+Gyr product.
+
+probes:
+  - url: https://www.landisgyr.com/
+    status: 200
+    note: Redirects to https://www.landisgyr.com/ (AEM site, region-split under /us/en/home).
+  - url: https://landisgyr.com/
+    status: 200
+  - url: https://www.landisgyr.com/robots.txt
+    status: 200
+    note: Lists 7 regional sitemaps; none reference a developer area.
+  - url: https://developer.landisgyr.com/
+    status: 0
+    note: DNS does not resolve.
+  - url: https://developers.landisgyr.com/
+    status: 200
+    note: >-
+      REAL developer portal, Nuxt SPA, Firebase-hosted, SSR payload empty. Routes
+      confirmed live (all 200, all empty without auth) — /login /register /register-complete
+      /get-started /explore /documents /learning-paths /community /faq /request-devkit
+      /dashboard /profile /profile/application /contact-us /terms-of-use /privacy-policy
+      and an /admin/* tree. Unknown routes 404 with application/json, so the 200s are real
+      routes. Bundle string confirming ownership - "Use the links below to contact
+      Landis+Gyr or link to the Developer Forum for support."
+  - url: https://docs.landisgyr.com/
+    status: 0
+    note: DNS does not resolve.
+  - url: https://api.landisgyr.com/
+    status: 0
+    note: DNS does not resolve.
+  - url: https://data.landisgyr.com/
+    status: 0
+    note: DNS does not resolve.
+  - url: https://developers.landisgyr.com/openapi.json
+    status: 404
+  - url: https://developers.landisgyr.com/swagger.json
+    status: 404
+  - url: https://developers.landisgyr.com/api-docs
+    status: 404
+  - url: https://developers.landisgyr.com/docs
+    status: 404
+  - url: https://developers.landisgyr.com/api
+    status: 404
+  - url: https://developers.landisgyr.com/sitemap.xml
+    status: 404
+  - url: https://developers.landisgyr.com/robots.txt
+    status: 404
+  - url: https://www.landisgyr.com/openapi.json
+    status: 404
+  - url: https://www.landisgyr.com/swagger.json
+    status: 404
+  - url: https://www.landisgyr.com/api-docs
+    status: 404
+  - url: https://www.landisgyr.com/.well-known/security.txt
+    status: 404
+  - url: https://toolsportal.landisgyr.com/
+    status: 200
+    note: '"Landis+Gyr | Tools Portal" — an empty-bodied customer login shell, not a developer surface.'
+  - url: https://blog.landisgyr.com/en/us
+    status: 200
+    note: HubSpot-hosted blog; RSS confirmed at /en/us/rss.xml (200, text/xml).
+  - url: https://eu.landisgyr.com/
+    status: 200
+    note: >-
+      EMEA property (HubSpot). The EMEA business — including the Converge REST API
+      marketed at landisgyr.eu — was divested to AURELIUS and completed in 2026, so it is
+      NOT counted as a Landis+Gyr API surface in this profile.
+  - url: https://investors.landisgyr.com/
+    status: 200
+  - url: https://careers.landisgyr.com/
+    status: 200
+  - url: https://github.com/landisgyr
+    status: 200
+    note: >-
+      NOT the company — the account resolves to an individual, "Landisgyr (Shailendra
+      Joshi)". No Landis+Gyr GitHub organization exists.
+  - url: https://stackoverflowteams.com/c/lg-developers
+    status: 200
+    note: Private Stack Overflow for Teams instance referenced from the portal bundle as
+      the Developer Forum. Content requires membership.
+  - url: https://www.landisgyr.com/us/en/home/software
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/software/gridstream-connect-apps-ecosystem
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/solutions/edge-intelligence-and-orchestration/Apps
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/solutions/flexible-communications/wi-sun-interoperability
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/solutions/grid-flexibility/demand-response
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/legal/privacy-policy.html
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/legal/terms-of-use.html
+    status: 200
+  - url: https://www.landisgyr.com/us/en/home/misc/report-security-issue.html
+    status: 200
+
+dnsEnumeration:
+  method: dig over 38 candidate hostnames under landisgyr.com
+  resolving:
+    - developers.landisgyr.com (Firebase Hosting, HTTP 200)
+    - blog.landisgyr.com (HubSpot, HTTP 200)
+    - eu.landisgyr.com (HubSpot, HTTP 200)
+    - investors.landisgyr.com (HTTP 200)
+    - careers.landisgyr.com (jobs2web, HTTP 200)
+    - toolsportal.landisgyr.com (HTTP 200)
+  notResolving:
+    - developer, docs, doc, api, apis, data, partner, partners, portal, support, help,
+      cloud, connect, gridstream, marketplace, appstore, apps, applab, appstudio, emerge,
+      analytics, my, account, login, sso, auth, identity, idp, status, info, na, us, iot,
+      devicecloud
+
+productApiFamily:
+  note: >-
+    Represented faithfully from Landis+Gyr's own segmentation. NONE of these has a public
+    contract; they are recorded as product families, not as APIs, and apis[] in apis.yml is
+    deliberately EMPTY.
+  families:
+    - segment: Metering / usage
+      products: [Revelo E360/E660 metering platform, Focus AXe, S4x, G480 ultrasonic
+        smart gas meter, RF water modules, Meter Data Management System (MDMS)]
+    - segment: Network / connectivity
+      products: [Gridstream Connect (RF mesh IPv6, Wi-SUN FAN), cellular LTE-M, Series 6
+        and N500/N550 network nodes, N2400/N2450 network gateway]
+    - segment: Head-end and orchestration
+      products: [Emerge Head End Platform, App Manager, IoT Gateway, TechStudio]
+    - segment: Edge application development
+      products: [Gridstream Connect Apps Ecosystem — App Studio (Java IDE), App Marketplace,
+        App Lab, Revelo Developer Kit (virtual and hardware)]
+    - segment: DER / demand response
+      products: [Power Center load control, L532 Advanced Load Control Switch,
+        Enterprise-to-Edge DERMS (OATI webSmartEnergy)]
+    - segment: Analytics and outage
+      products: [Analytics Solutions, SmartData for Outage Management]
+    - segment: Billing / enterprise integration
+      products: [MDUS SAP for Utilities Adapter]
+    - segment: Consumer engagement
+      products: [Consumer Engagement (white-labelled to the utility)]
+    - segment: Smart communities
+      products: [Smart Community Center Software, street light controller]
+
+corporateFacts:
+  legalName: Landis+Gyr Group AG
+  founded: 1896 ("over 130 years" per the company's own who-we-are page)
+  domicile: Cham, Zug, Switzerland — moved into a new Cham headquarters in 2026
+  americasHeadquarters: 30000 Mill Creek Ave, Suite 100, Alpharetta, Georgia, United States
+  listing: SIX Swiss Exchange, ticker LAND
+  customers: '"Trusted by more than 2,000 utilities worldwide" (who-we-are page)'
+  divestitures:
+    - EMEA business sold to AURELIUS, completed 2026 — company states it will "sharpen its
+      strategic focus on the Americas and Asia-Pacific regions".
+    - EV Solutions business (Ocean EV charging software) — share purchase agreement signed 2025.
+    - Rhebo (OT security) sold to Everfield, announced 2026.
+  homeMarketRationale: >-
+    Swiss-domiciled and Swiss-listed, but after the EMEA exit the Americas is the retained
+    core, the Americas headquarters in Alpharetta hosts the majority of the operational
+    management team, and the US is the largest market. Recorded here as home market
+    United States with the Swiss domicile stated alongside it, not instead of it.
+
+sources:
+  - url: https://www.landisgyr.com/us/en/home/software/gridstream-connect-apps-ecosystem
+    type: ProductPage
+    note: >-
+      Names App Studio ("Java-based Application Development Environment", "Revelo Developer
+      Kit - Virtual & Hardware", "Comprehensive set of APIs for meter app development"),
+      App Marketplace, App Manager, App Lab and Developer Community — and links to NONE of
+      them. The only calls to action are "Email Our Team" (sales inquiry) and a PDF brochure.
+  - url: https://www.landisgyr.com/us/en/home/software
+    type: ProductPage
+    note: Enumerates the software portfolio; mentions integration but no APIs, no standards,
+      no Green Button.
+  - url: https://developers.landisgyr.com/
+    type: DeveloperPortal
+    note: Live, real, and entirely gated.
+  - url: https://en.wikipedia.org/wiki/Landis%2BGyr
+    type: Reference
+    note: Corporate identity, listing, and the 2026 AURELIUS EMEA divestiture.
+  - url: https://www.greenbuttonalliance.org/ds-vendors
+    type: Registry
+    note: Green Button platform-provider directory; no Landis+Gyr entry found.
+
+actions:
+  openapiHarvested: false
+  specsCount: 0
+  apisListed: 0
+  reason: >-
+    No OpenAPI, Swagger, AsyncAPI, Postman collection, GraphQL schema or endpoint reference
+    is published in public by Landis+Gyr on any host it controls. Every documented interface
+    lives behind an approval-gated portal. Fabricating a spec, a base URL or an endpoint
+    list from marketing copy would violate the no-fabrication rule, so openapi/ is omitted
+    and apis[] is empty.
+  tier: built-stub
+  tierReason: identity captured, developer portal confirmed live but fully gated, zero
+    public contracts

@@ -1,0 +1,118 @@
+aid: landis-gyr
+url: https://raw.githubusercontent.com/api-evangelist/landis-gyr/refs/heads/main/apis.yml
+name: Landis+Gyr
+kind: company
+description: >-
+  Landis+Gyr Group AG is a 130-year-old energy technology company that builds the
+  smart electricity, gas and water meters, the RF-mesh and cellular networks, and
+  the head-end, meter-data-management and grid-analytics software that utilities
+  run advanced metering infrastructure on. It is incorporated in Cham, Switzerland
+  and listed on the SIX Swiss Exchange, but after divesting its EMEA business to
+  AURELIUS in March 2026 its centre of gravity — and its Americas headquarters and
+  much of its executive team — sits in Alpharetta, Georgia, making the United States
+  its home market. Landis+Gyr sits one layer UPSTREAM of the consumer: it sells to
+  the roughly 2,000 utilities that are themselves the regulated data holders, so no
+  data-sharing mandate — not US Green Button, not Ontario's Green Button regulation,
+  not Australia's Consumer Data Right for energy — attaches to Landis+Gyr itself.
+  Its API posture reflects that. Landis+Gyr publishes NO open market or grid data
+  and NO consumer usage API; the meter interval data its Gridstream Connect and MDMS
+  products produce reaches households only after a utility customer re-publishes it,
+  typically through a third-party Green Button–certified portal that Landis+Gyr does
+  not operate. There is a real developer portal at developers.landisgyr.com — the
+  Gridstream Connect Apps / Revelo edge-app program, with App Studio, documents,
+  learning paths, a Stack Overflow Teams developer forum and a Revelo developer-kit
+  request flow — but every content route renders empty without authentication, the
+  registration path carries an admin invitation and approval workflow, and the
+  corporate site never links to it: the public call to action on the Apps Ecosystem
+  page is "Email Our Team", pointing at a sales inquiry form. No OpenAPI, Swagger,
+  Postman collection, SDK download or endpoint reference is published anywhere in
+  public. The only interoperability standard Landis+Gyr states publicly is Wi-SUN
+  FAN certification (15 certified products) over standards-based IPv6 mesh — a
+  network standard, not a customer-data standard.
+image: https://www.landisgyr.com/content/dam/landisgyr/favicons/LandisGyr_favicon_android-chrome-192x192.png
+tags:
+- Energy
+- United States
+- Utilities
+- Electricity
+- Gas
+- Water
+- Smart Metering
+- AMI
+- Grid
+- Grid Edge
+- Demand Response
+- Internet Of Things
+- Meter Data Management
+- Wi-SUN
+- Energy Technology
+created: '2026-07-27'
+modified: '2026-07-27'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.landisgyr.com/us/en/home
+- type: About
+  url: https://www.landisgyr.com/us/en/home/about-landis-gyr/who-we-are.html
+- type: DeveloperPortal
+  url: https://developers.landisgyr.com/
+  name: Landis+Gyr Developers (gated — registration + approval, no public content)
+- type: SignUp
+  url: https://developers.landisgyr.com/register
+- type: Login
+  url: https://developers.landisgyr.com/login
+- type: Forum
+  url: https://stackoverflowteams.com/c/lg-developers
+  name: L+G Developer Forum (Stack Overflow for Teams, private team)
+- type: Portal
+  url: https://toolsportal.landisgyr.com/
+  name: Landis+Gyr Tools Portal (customer login)
+- type: Products
+  url: https://www.landisgyr.com/us/en/home/software
+- type: Devices
+  url: https://www.landisgyr.com/us/en/home/devices
+- type: Solutions
+  url: https://www.landisgyr.com/us/en/home/solutions/next-gen-ami
+- type: Documentation
+  url: https://www.landisgyr.com/us/en/home/software/gridstream-connect-apps-ecosystem
+  name: Gridstream Connect Apps Ecosystem (App Studio, App Marketplace, App Manager, App Lab)
+- type: Standards
+  url: https://www.landisgyr.com/us/en/home/solutions/flexible-communications/wi-sun-interoperability
+  name: Wi-SUN FAN interoperability
+- type: Partners
+  url: https://www.landisgyr.com/us/en/home/about-landis-gyr/our-partners
+- type: Training
+  url: https://www.landisgyr.com/us/en/home/solutions/lifecycle-services-and-support/training.html
+- type: Support
+  url: https://www.landisgyr.com/us/en/home/contact/support-inquiry-form.html
+- type: Contact
+  url: https://www.landisgyr.com/us/en/home/contact/sales-inquiry.html
+- type: Blog
+  url: https://blog.landisgyr.com/en/us
+- type: BlogRSS
+  url: https://blog.landisgyr.com/en/us/rss.xml
+- type: Newsroom
+  url: https://www.landisgyr.com/us/en/home/news-media/newsroom.html
+- type: Investors
+  url: https://investors.landisgyr.com/
+- type: Careers
+  url: https://careers.landisgyr.com/
+- type: TermsOfService
+  url: https://www.landisgyr.com/us/en/home/legal/terms-of-use.html
+- type: PrivacyPolicy
+  url: https://www.landisgyr.com/us/en/home/legal/privacy-policy.html
+- type: Security
+  url: https://www.landisgyr.com/us/en/home/misc/report-security-issue.html
+- type: LinkedIn
+  url: https://www.linkedin.com/company/landis/
+- type: X
+  url: https://www.twitter.com/landisgyr
+- type: YouTube
+  url: https://www.youtube.com/user/landisgyrofficial
+- type: Facebook
+  url: https://www.facebook.com/LandisGyr/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
