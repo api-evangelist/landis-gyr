@@ -29,6 +29,17 @@ description: >-
   public. The only interoperability standard Landis+Gyr states publicly is Wi-SUN
   FAN certification (15 certified products) over standards-based IPv6 mesh — a
   network standard, not a customer-data standard.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.landisgyr.com/content/dam/landisgyr/favicons/LandisGyr_favicon_android-chrome-192x192.png
 tags:
 - Energy
