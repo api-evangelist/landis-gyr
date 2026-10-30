@@ -64,79 +64,89 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Landis+Gyr Group AG is a 130-year-old energy technology company that builds the smart electricity, gas and water meters, the RF-mesh and cellular networks, and the head-end, meter-data-management and grid-analytics software that utilities run advanced metering infrastructure on. It is incorporated in Cham, Switzerland and listed on the SIX Swiss Exchange (ticker `LAND`), with its Americas headquarters — and much of its executive team — in Alpharetta, Georgia.
+Landis+Gyr Group AG is a 130-year-old energy technology company that builds the smart electricity, gas and water meters, the RF-mesh and cellular networks, and the head-end, meter-data-management and grid-analytics software that utilities run advanced metering infrastructure on. It is incorporated in Cham, Switzerland and listed on the SIX Swiss Exchange, but after divesting its EMEA business to AURELIUS in March 2026 its centre of gravity — and its Americas headquarters and much of its executive team — sits in Alpharetta, Georgia, making the United States its home market. Landis+Gyr sits one layer UPSTREAM of the consumer: it sells to the roughly 2,000 utilities that are themselves the regulated data holders, so no data-sharing mandate — not US Green Button, not Ontario's Green Button regulation, not Australia's Consumer Data Right for energy — attaches to Landis+Gyr itself. Its API posture reflects that. Landis+Gyr publishes NO open market or grid data and NO consumer usage API; the meter interval data its Gridstream Connect and MDMS products produce reaches households only after a utility customer re-publishes it, typically through a third-party Green Button–certified portal that Landis+Gyr does not operate. There is a real developer portal at developers.landisgyr.com — the Gridstream Connect Apps / Revelo edge-app program, with App Studio, documents, learning paths, a Stack Overflow Teams developer forum and a Revelo developer-kit request flow — but every content route renders empty without authentication, the registration path carries an admin invitation and approval workflow, and the corporate site never links to it: the public call to action on the Apps Ecosystem page is "Email Our Team", pointing at a sales inquiry form. No OpenAPI, Swagger, Postman collection, SDK download or endpoint reference is published anywhere in public. The only interoperability standard Landis+Gyr states publicly is Wi-SUN FAN certification (15 certified products) over standards-based IPv6 mesh — a network standard, not a customer-data standard.
 
-After divesting its EMEA business to AURELIUS in 2026, the company states it will "sharpen its strategic focus on the Americas and Asia-Pacific regions". The United States is its home market. It serves "more than 2,000 utilities worldwide".
+**Areas:** Energy · United States · Utilities · Electricity · Gas · Water · Smart Metering · AMI · Grid · Grid Edge · Demand Response · IoT
 
-Home market: **United States** · Tier: **metering** · https://www.landisgyr.com/us/en/home
+## Landis+Gyr on APIs.io
 
-## Where it sits in the value chain
+Everything profiled for Landis+Gyr is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/landis-gyr/](https://apis.io/providers/landis-gyr/)** — or go straight to one of the APIs or properties below.
 
-One layer **upstream of the consumer**. Landis+Gyr sells to the utilities that are themselves the regulated data holders. The meter it manufactures creates the most granular consumer energy data in existence — and Landis+Gyr ships none of it to the public.
+### Published properties
 
-## Mandate posture
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| | |
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Landis Gyr Authentication](https://apis.io/security/landis-gyr/landis-gyr-authentication/)
+- [Landis Gyr Domain Security](https://apis.io/security/landis-gyr/landis-gyr-domain-security/)
+- [Landis Gyr Vulnerability Disclosure](https://apis.io/security/landis-gyr/landis-gyr-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.landisgyr.com/us/en/home)
+- [Documentation](https://www.landisgyr.com/us/en/home/software/gridstream-connect-apps-ecosystem)
+- [Sign up](https://developers.landisgyr.com/register)
+- [Support](https://www.landisgyr.com/us/en/home/contact/support-inquiry-form.html)
+- [Blog](https://blog.landisgyr.com/en/us)
+- [Security](https://www.landisgyr.com/us/en/home/misc/report-security-issue)
+- [Compliance](https://www.landisgyr.com/us/en/home/knowledge.html?types=Certificates&date=date.desc)
+- [Terms of service](https://www.landisgyr.com/us/en/home/legal/terms-of-use.html)
+- [Privacy policy](https://www.landisgyr.com/us/en/home/legal/privacy-policy.html)
+
+## API Evangelist rating
+
+**Kin Score 24.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
 |---|---|
-| Mandate regime | **none** |
-| Mandate status | **not-applicable** |
-| Data standard (consumer) | **no standard reference found** |
-| Data standard (network) | Wi-SUN FAN (15 certified products), IPv6 mesh |
-| Consumer data API | **no** |
-| Open market / grid data | **no** |
+| Discoverability | 56.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 42.1 |
 
-Green Button (NAESB/NIST ESPI) obligations attach to utilities and retailers, not to meter manufacturers — and in the US the programme is voluntary with nothing compelling adoption. Ontario's Green Button regulation binds Ontario LDCs. Australia's Consumer Data Right for energy designates retailers and AEMO. Landis+Gyr sells into all three markets and is bound by none of them.
+**Agent readiness 0.0** — human-only
 
-There is **no** Green Button page on the corporate site (all 425 sitemap URLs checked), **no** Landis+Gyr entry found in the Green Button Alliance platform-provider directory, and **no** Green Button claim made by the company. Where reporting describes Landis+Gyr meters producing ESPI XML, the export runs through a utility's own certified portal — a downstream implementation, not this company's.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-## API surface
+**Regulatory alignment 24.6** — Energy & Utilities
 
-Landis+Gyr publishes **no public API documentation, no OpenAPI/Swagger/AsyncAPI, no Postman collection, no SDK download and no endpoint reference**. `apis[]` in `apis.yml` is deliberately empty.
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/landis-gyr/](https://apis.io/providers/landis-gyr/).
 
-A real developer portal does exist at **https://developers.landisgyr.com/** — the Gridstream Connect Apps / Revelo edge-app program. It is:
+## How this profile is made
 
-- **Unlinked.** No page of the corporate site and no sitemap references it. The public call to action on the Gridstream Connect Apps Ecosystem page is "Email Our Team", pointing at a sales inquiry form.
-- **Empty without auth.** `/get-started`, `/explore`, `/documents`, `/learning-paths`, `/community`, `/faq`, `/request-devkit`, `/dashboard` all return HTTP 200 and render nothing. Unknown routes 404, so those 200s are real routes.
-- **Approval-gated.** The client bundle exposes `POST /register/validate/{id}`, an `/admin/users/invitations` surface, a per-page `access_list`, and an application-status enum including `APPROVED`.
-- **Firebase-authenticated.** Google Identity Platform (`identitytoolkit.googleapis.com`) with reCAPTCHA Enterprise. `/.well-known/openid-configuration` → 404.
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-Getting in: register → pass validation/approval → request a Revelo developer kit at `/request-devkit`. Hardware or a simulated Revelo meter in App Studio is the actual unit of access; the "comprehensive set of APIs for meter app development" the marketing page advertises is an on-device Java app API, not a web API.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Landis+Gyr: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-`developer.`, `docs.`, `api.` and `data.landisgyr.com` do not resolve. `github.com/landisgyr` is an individual's account, not the company.
+## Open an issue
 
-## Artifacts
-
-| Artifact | File | Wired in `apis.yml` |
-|---|---|---|
-| Company identity | `apis.yml` | — |
-| Review — mandate, standards, consumer/market split, access gate, auth, probes, enrichment log | `review.yml` | — |
-| Standards conformance — Wi-SUN FAN 1.0/1.1, IPv6 mesh, ISO management systems, MultiSpeak/CMEP | `conformance/landis-gyr-conformance.yml` | `Conformance`, `Compliance` |
-| productCERT vulnerability disclosure programme | `security/landis-gyr-vulnerability-disclosure.yml` | `VulnerabilityDisclosure`, `Security` |
-| TLS / HSTS / DNSSEC / CAA / SPF / DMARC probe | `security/landis-gyr-domain-security.yml` | `DomainSecurity` |
-| Portfolio lifecycle + verified absence of versioning/deprecation/changelog/SLA/status page | `lifecycle/landis-gyr-lifecycle.yml` | `Lifecycle` |
-| Package-registry sweep (8 registries, zero first-party libraries) | `packages/landis-gyr-packages.yml` | `Packages` |
-| Generated llms.txt | `llms/landis-gyr-llms.txt` | `LLMsTxt` |
-| `/.well-known/` sweep (30 probes, 6 hosts, all negative) | `well-known/landis-gyr-well-known.yml` | *withheld — nothing published* |
-| Authentication profile (developer-portal Firebase; no API auth published) | `authentication/landis-gyr-authentication.yml` | *withheld — no documented API auth* |
-
-No `openapi/` directory: nothing real was found to harvest, re-confirmed 2026-07-27 against
-the API host roots, the docs host, and the Cloud Run backend the portal bundle exposes.
-
-Two artifacts are deliberately **not** pointed at from `apis.yml`. Both would satisfy a
-scored discoverability check (`WellKnown`, `Authentication`) that Landis+Gyr does not
-actually earn — it publishes no `/.well-known/` document and documents no API
-authentication. The files are kept as evidence of the sweep, not as claims.
-
-## What Landis+Gyr does publish
-
-Round two found more than round one did. Landis+Gyr runs a real coordinated vulnerability
-disclosure programme — **productCERT**, `productCERT@landisgyr.com`, with a published PGP
-key and a Vulnerability Management Policy Summary — and a real **certificate register**
-carrying ISO/IEC 27001, ISO 9001, ISO 14001, ISO 45001 and ISO 22301 with downloadable
-PDFs. It has certified products to **Wi-SUN FAN 1.1** as well as 1.0. And Oracle Utilities'
-adapter documentation reveals that the Gridstream Command Center head-end speaks
-**MultiSpeak v3.1** and **CMEP** — the first concrete evidence of the protocol behind the
-gate, though it is an integrator's description rather than a Landis+Gyr publication.
-
-The security and quality posture is well documented. The API posture is not documented at
-all. That gap is the story.
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/landis-gyr/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
